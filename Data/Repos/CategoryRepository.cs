@@ -32,7 +32,7 @@ namespace BlogApi.Data.Repos
       return _context.Categories.Where(c => c.Id == id).FirstOrDefault();
     }
 
-    public ICollection<Category> GetAllCategoriesOfBlog(int id)
+    public ICollection<Category> GetCategoriesOfBlog(int id)
     {
       return _context.BlogCategories.Where(c => c.BlogId == id).Select(c => c.Category).ToList();
 

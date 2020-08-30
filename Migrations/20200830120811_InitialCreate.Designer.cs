@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200813113106_AddBlogUser")]
-    partial class AddBlogUser
+    [Migration("20200830120811_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -334,7 +334,7 @@ namespace BlogApi.Migrations
                         .IsRequired();
 
                     b.HasOne("BlogApi.Models.Category", "Category")
-                        .WithMany("BlogCategory")
+                        .WithMany("BlogCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

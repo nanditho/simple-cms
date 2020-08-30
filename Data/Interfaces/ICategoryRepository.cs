@@ -7,7 +7,7 @@ namespace BlogApi.Data.Interfaces
   {
     ICollection<Category> GetCategories();
     Category GetCategory(int id);
-    ICollection<Category> GetAllCategoriesOfBlog(int id);
+    ICollection<Category> GetCategoriesOfBlog(int id);
     ICollection<Blog> GetBlogsForCategory(int categoryId);
     bool CategoryExists(int category);
   }

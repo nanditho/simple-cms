@@ -58,7 +58,7 @@ namespace BlogApi.Controllers
 
       return Ok(countryDto);
     }
-
+    //api/country/user/userId
     [HttpGet("user/{userId}")]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]

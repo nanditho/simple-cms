@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlogApi.Controllers
 {
-  [Route("api/[controller]")]
+  [Route("api/category")]
   [ApiController]
   public class CategoriesController : Controller
   {
@@ -26,7 +26,7 @@ namespace BlogApi.Controllers
         return BadRequest(ModelState);
 
       var categoriesDto = new List<CategoryDto>();
-      foreach (var category in categoriesDto)
+      foreach (var category in categories)
       {
         categoriesDto.Add(new CategoryDto
         {
@@ -59,6 +59,28 @@ namespace BlogApi.Controllers
       };
 
       return Ok(categoryDto);
+    }
+
+    [HttpGet("blog/{id}")]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(404)]
+    [ProducesResponseType(400, Type = typeof(IEnumerable<CategoryDto>))]
+    public IActionResult GetCategoriesOfBlog(int id)
+    {
+      var categories = _repo.GetCategoriesOfBlog(id);
+      if (!ModelState.IsValid)
+        return BadRequest(ModelState);
+
+      var categoriesDto = new List<CategoryDto>();
+      foreach (var category in categories)
+      {
+        categoriesDto.Add(new CategoryDto
+        {
+          Id = category.Id,
+          Name = category.Name
+        });
+      }
+      return Ok(categoriesDto);
     }
 
 

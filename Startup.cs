@@ -7,7 +7,6 @@ using AutoMapper;
 using BlogApi.Data;
 using BlogApi.Data.Interfaces;
 using BlogApi.Data.Repos;
-using BlogApi.Data.Services;
 using BlogApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -24,6 +23,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using simple_cms.Data.Interfaces;
+using simple_cms.Data.Repos;
 
 namespace BlogApi
 {
@@ -73,10 +74,10 @@ namespace BlogApi
 
       services.AddAutoMapper(typeof(Startup));
       services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-      services.AddScoped<IBlogService, BlogService>();
       services.AddScoped<IAuthRepository, AuthRepository>();
       services.AddScoped<ICountryRepository, CountryRepository>();
       services.AddScoped<ICategoryRepository, CategoryRepository>();
+      services.AddScoped<IUserRepository, UserRepository>();
       services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     }
 

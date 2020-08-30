@@ -4,7 +4,7 @@ using BlogApi.Models;
 
 namespace BlogApi.Dtos.Blog
 {
-  public class GetBlogDto
+  public class BlogDto
   {
     public int Id { get; set; }
     public string Title { get; set; }

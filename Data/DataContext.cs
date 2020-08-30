@@ -43,7 +43,7 @@ namespace BlogApi.Data
         .HasForeignKey(b => b.BlogId);
       builder.Entity<BlogCategory>()
         .HasOne(c => c.Category)
-        .WithMany(bc => bc.BlogCategory)
+        .WithMany(bc => bc.BlogCategories)
         .HasForeignKey(c => c.CategoryId);
 
       builder.Entity<BlogUser>()
@@ -56,9 +56,6 @@ namespace BlogApi.Data
         .HasOne(c => c.Blog)
         .WithMany(bc => bc.BlogUser)
         .HasForeignKey(c => c.UserId);
-
-
-
 
 
     }

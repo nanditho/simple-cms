@@ -332,7 +332,7 @@ namespace BlogApi.Migrations
                         .IsRequired();
 
                     b.HasOne("BlogApi.Models.Category", "Category")
-                        .WithMany("BlogCategory")
+                        .WithMany("BlogCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
