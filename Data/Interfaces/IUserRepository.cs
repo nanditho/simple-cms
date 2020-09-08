@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using BlogApi.Models;
 
 namespace simple_cms.Data.Interfaces
@@ -7,8 +8,8 @@ namespace simple_cms.Data.Interfaces
     {
         ICollection<User> GetUsers();
         User GetUser(int id);
-        ICollection<User> GetUserBlogPosts(int id);
-        ICollection<User> GetUserComments(int id); 
+        IQueryable<BlogUser> GetUserBlogPosts(int id);
+        IQueryable<Comment> GetUserComments(int id); 
         bool UserExists(int id);
     }
 }

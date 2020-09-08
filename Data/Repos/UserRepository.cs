@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BlogApi.Data;
 using BlogApi.Models;
+using Microsoft.EntityFrameworkCore;
 using simple_cms.Data.Interfaces;
 
 namespace simple_cms.Data.Repos
@@ -19,19 +20,19 @@ namespace simple_cms.Data.Repos
            return _context.Users.Where(c => c.Id == id).FirstOrDefault();
         }
 
-        public ICollection<User> GetUserBlogPosts(int id)
+        public IQueryable<BlogUser> GetUserBlogPosts(int id)
         {
-            throw new System.NotImplementedException();
+            return _context.Users.Where(c => c.Id == id).SelectMany(c => c.BlogUser);
         }
 
-        public ICollection<User> GetUserComments(int id)
+        public IQueryable<Comment> GetUserComments(int id)
         {
-            throw new System.NotImplementedException();
+            return _context.Users.Where(c => c.Id == id).SelectMany(c => c.Comments);
         }
 
         public ICollection<User> GetUsers()
         {
-            throw new System.NotImplementedException();
+            return _context.Users.OrderBy(c => c.Id).ToList();
         }
 
         public bool UserExists(int id)
